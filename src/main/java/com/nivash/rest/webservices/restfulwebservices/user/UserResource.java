@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class UserResource {
     }
     public static User userMethod (User user, int id) throws UserNotFoundException{
         if (user==null)
-            throw new UserNotFoundException("id="+id);
+            throw new UserNotFoundException("id-"+id+" Not Found");
         return user;
     }
 
@@ -38,7 +39,7 @@ public class UserResource {
     //Input - User Details
     //Output - Created & Return the created URI
     @PostMapping("/users")
-    public ResponseEntity<Object> createUser(@RequestBody User user){
+    public ResponseEntity<Object> createUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
         //CREATED
         // /user/{id}
@@ -51,7 +52,7 @@ public class UserResource {
         User user = service.deleteByID(id);
 
         if (user==null)
-            throw new UserNotFoundException("id-"+id);
+            throw new UserNotFoundException("id-"+id+" Not Found");
     }
 
 }
