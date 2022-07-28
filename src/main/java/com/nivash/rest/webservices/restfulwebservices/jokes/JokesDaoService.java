@@ -46,5 +46,12 @@ public class JokesDaoService {
         while (iterator.hasNext()){
             Jokes jokes = iterator.next();
         }
+        for (Jokes joke:jokes){
+            if (joke.getId()==id){
+                iterator.remove();
+                return joke;
+            }
+        }
+        return null;
     }
 }
