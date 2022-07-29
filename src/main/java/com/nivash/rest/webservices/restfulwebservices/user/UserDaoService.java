@@ -29,7 +29,7 @@ public class UserDaoService {
             user.setId(++usersCount);
         }
         users.add(user);
-        return  user;
+        return user;
     }
     public User findOne(int id){
         for(User user:users){
