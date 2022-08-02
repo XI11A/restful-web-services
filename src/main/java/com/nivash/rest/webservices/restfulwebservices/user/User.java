@@ -3,13 +3,14 @@ package com.nivash.rest.webservices.restfulwebservices.user;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 import java.util.Date;
-
+    
 public class User {
 
     private Integer id;
 
     @Size(min = 2 ,max = 15)
     private String name;
+    
     @Past
     private Date birthDate;
 
